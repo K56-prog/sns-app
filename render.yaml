@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: sns-app
+    env: python
+    region: singapore
+    buildCommand: './build.sh'
+    startCommand: 'gunicorn snsproject.wsgi:application'
+    plan: free
+    branch: master
+    healthCheckPath: /admin/
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: snsdb
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
+    autoDeploy: true
