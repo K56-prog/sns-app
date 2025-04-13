@@ -9,7 +9,6 @@ services:
     branch: master
     healthCheckPath: /admin/
     envVars:
-      envVars:
       - key: DATABASE_URL
         sync: false
 
