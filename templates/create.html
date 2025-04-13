@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        <form method="POST" enctype="multipart/form-data">{% csrf_token %} 
+        <p>title:<input type="text" name="title"></p>
+        <p>text:<input type="text" name="text"></p>
+        <p><input type="file" name="photo"></p>
+        <input type="hidden" name="author" value="{{ user.username }}"> 
+        <input type="submit" value="create">
+        </form>
+    </div>
+</div>
+
+{% else %}
+<a href="{% url 'login' %}">Please login</a>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+  <div class="alert alert-success" role="alert">
+      <p>タイトル : {{ object.title }}</p>
+      <p>投稿者 : {{ object.author }}</p>
+      <p>内容 : {{ object.text }}</p>
+      <p><img src="{{ object.photo.url }}" width="300"></p>
+      <a class="btn btn-primary" href="{% url 'good' object.pk %}" role="button">いいね</a>
+      <a class="btn btn-secondary" href="{% url 'read' object.pk %}" role="button">既読</a>
+  </div>
+</div>
+{% else %}
+<a href="{% url 'login' %}">Please login</a>
+{% endif %}
+{% endblock content %}

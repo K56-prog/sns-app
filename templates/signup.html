@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+    <body class="d-flex align-items-center py-4 bg-body-tertiary">
+        <div class="container">
+            <main class="form-signin w-100 m-auto">
+                {{ error }}
+                <form class="form-signin" method="POST">{% csrf_token %}
+                    <h1 class="h3 mb-3 fw-normal">Please signup</h1>
+
+                    <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
+                    <label for="floatingInput">username</label>
+                    </div>
+                    <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                    <label for="floatingPassword">Password</label>
+                    </div>
+
+                    <div class="form-check text-start my-3">
+                    <label class="form-check-label" for="flexCheckDefault">
+                
+                    </label>
+                    </div>
+                    <button class="btn btn-primary w-100 py-2" type="submit">signup</button>
+                </form>
+            </main>
+        </div>
+    </body>
+{% endblock content %}
