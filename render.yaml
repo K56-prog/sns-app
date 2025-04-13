@@ -11,10 +11,9 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: snsdb
+          name: supabase-external
           property: connectionString
       - key: SECRET_KEY
-        generateValue: true
-      - key: WEB_CONCURRENCY
-        value: 4
+        sync: false  
+
     autoDeploy: true
